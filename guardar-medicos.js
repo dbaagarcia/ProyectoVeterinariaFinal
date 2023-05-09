@@ -1,4 +1,4 @@
-const formularioMedico = document.getElementById('registro-mwdicos-form');
+const formularioMedico = document.getElementById('registro-medicos-form');
 formularioMedico.addEventListener('submit', (event) => {
     event.preventDefault();
     const datosMedico = {
