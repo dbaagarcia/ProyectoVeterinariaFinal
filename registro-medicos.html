@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario Veterinaria</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <h1>CENTRO MEDICO VETERINARIO BACKEND</h1>
+    </header>
+    <main>
+        <form id="registro-mwdicos-form">
+            <h2>REGISTRO DE MEDICOS VETERINARIOS</h2>
+            <label for="nombre">Nombre:<span> *</span></label>
+            <input type="text" id="nombre" name="nombre" required>
+            <label for="apellido">Apellido:<span> *</span></label>
+            <input type="text" id="apellido" name="apellido" required>
+            <label for="cedula">Número de Cédula:<span> *</span></label>
+            <input type="text" id="cedula" name="cedula" required>
+            <label for="consultorio">Número de consultorio:<span> *</span></label>
+            <input type="number" id="consultorio" name="consultorio" required>
+            <label for="telefono">Telefono:<span> *</span></label>
+            <input type="tel" id="telefono" name="telefono" required>
+            <label for="correo">Correo de contacto:<span> *</span></label>
+            <input type="email" id="correo" name="correo" required>
+            <label for="especialidad">Especialidad requerida:<span> *</span></label>
+            <select id="especialidad" name="especialidad">
+                <option value="">------------------------  Seleccione la especialidad  ---------------------</option>
+                <option value="Medicina general">Medicina general</option>
+                <option value="Medicina interna">Medicina interna</option>
+                <option value="Medicina veterinaria preventiva">Medicina veterinaria preventiva</option>
+                <option value="Dermatología veterinaria">Dermatología veterinaria</option>
+                <option value="Cirugía veterinaria">Cirugía veterinaria</option>
+                <option value="Veterinaria conductual">Veterinaria conductual</option>
+                <option value="Odontología veterinaria">Odontología veterinaria</option>
+                <option value="Farmacología veterinaria">Farmacología veterinaria</option>
+            </select>
+
+            <input type="submit" value="Enviar">
+        </form>
+        <div class="boton-container">
+            <input type="button" id="botonVolver" value="Volver">
+        </div>
+    </main>
+    <script src="guardar-medicos.js"></script>
+    <script src="volver.js"></script>
+</body>
+
+</html>
