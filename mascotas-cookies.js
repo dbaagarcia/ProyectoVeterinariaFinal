@@ -5,30 +5,35 @@ const medicosCookie = JSON.parse(getCookie('medicos') || "[]");
 //buscar la tabla mascotas en HTML para agregar las nuevas mascotas
 const tablaMascotas = document.getElementById("tabla-mascotas");
 const cuerpoTabla = tablaMascotas.querySelector("tbody");
-mascotasCookie.forEach(mascota => {
+
+for (let i = 0; i < mascotasCookie.length; i++) {
+    const mascota = mascotasCookie[i];
     //insertar fila para agregar mascotas
     const fila = cuerpoTabla.insertRow();
     //insertar celdas para agregar cada uno de los datos de las mascotas
-    const nombreMascota = fila.insertCell();
-    const nombreDueño = fila.insertCell();
-    const cedulaDueño = fila.insertCell();
-    const edadMascota = fila.insertCell();
-    const telefonoDueño = fila.insertCell();
-    const especialidad = fila.insertCell();
+    const celdaNombreMascota = fila.insertCell();
+    const celdaNombreDueño = fila.insertCell();
+    const celdaCedulaDueño = fila.insertCell();
+    const celdaEdadMascota = fila.insertCell();
+    const celdaTelefonoDueño = fila.insertCell();
+    const celdaEspecialidad = fila.insertCell();
     //agregar la informaciona cada una de las celdas de la tabla
-    nombreMascota.textContent = mascota.nombreMascota;
-    nombreDueño.textContent = mascota.nombreDueño;
-    cedulaDueño.textContent = mascota.cedulaDueño;
-    edadMascota.textContent = mascota.edadMascota;
-    telefonoDueño.textContent = mascota.telefonoDueño;
-    especialidad.textContent = mascota.especialidad;
+    celdaNombreMascota.textContent = mascota.nombreMascota;
+    celdaNombreDueño.textContent = mascota.nombreDueño;
+    celdaCedulaDueño .textContent = mascota.cedulaDueño;
+    celdaEdadMascota.textContent = mascota.edadMascota;
+    celdaTelefonoDueño.textContent = mascota.telefonoDueño;
+    celdaEspecialidad.textContent = mascota.especialidad;
     //colocar el medico que va a tratar la mascota
     //mediante find encontramos el medico que tenga la especialidad
+    //devuelde el medico que tenga esa especialidad
     const medicoEspecialidad = medicosCookie.find(medico => medico.especialidad === mascota.especialidad);
-    const medicoMascota = fila.insertCell();
+    //crear la celda
+    const celdaMedicoMascota = fila.insertCell();
     //si hay medicos colocar el nombre del medico, de lo contrario colocar por asignar
-    medicoMascota.textContent = medicoEspecialidad ? medicoEspecialidad.nombreMedico : "Por asignar";
-});
+    celdaMedicoMascota.textContent = medicoEspecialidad ? medicoEspecialidad.nombreMedico : "Por asignar";
+}
+
 
 
 

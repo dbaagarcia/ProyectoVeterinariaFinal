@@ -1,7 +1,7 @@
 const formularioMedico = document.getElementById('registro-medicos-form');
 formularioMedico.addEventListener('submit', (event) => {
     event.preventDefault();
-    const datosMedico = {
+    const datosMedico = {//objeto
         nombreMedico: document.getElementById('nombre').value,
         apellidoMedico: document.getElementById('apellido').value,
         cedula: document.getElementById('cedula').value,
@@ -11,11 +11,12 @@ formularioMedico.addEventListener('submit', (event) => {
         correo: document.getElementById('correo').value
     };
     const medicosCookie = getCookie('medicos') ? JSON.parse(getCookie('medicos')) : [];
+    //¿hay algun medico con la especialidad? si si me devuleve true sino false
     const existeMedico = medicosCookie.some(medico => medico.especialidad === datosMedico.especialidad);
     if (existeMedico) {
         alert("Ya existe un medico para esta especialidad");
     } else {
-        guardarMedicoEnCookie(datosMedico);
+        guardarEnCookie(datosMedico);
     }
     const confirmacion = confirm('¿Desea ver los datos o seguir añadiendo medicos?');
     if (confirmacion) {
@@ -26,7 +27,7 @@ formularioMedico.addEventListener('submit', (event) => {
     }
 });
 // Función para guardar una medico en la cookie
-function guardarMedicoEnCookie(medico) {
+function guardarEnCookie(medico) {
     // Obtener los datos de la cookie actual
     let datosMedico = getCookie("medicos");
     // Si la cookie está vacía, inicializarla como un arreglo vacío

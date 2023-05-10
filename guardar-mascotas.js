@@ -1,15 +1,18 @@
+//obtenemos el formulario
 const formularioMascota = document.getElementById('registro-mascotas-form');
+//Cuando el formulario se envie va hacer lo que esta entre corchetes (5-21)
 formularioMascota.addEventListener('submit', (event) => {
-    event.preventDefault();
-    const datosMascota = {
-        nombreMascota: document.getElementById('mascota').value,
+    event.preventDefault();//quietara por defecto el envio del formulario
+    const datosMascota = {  //definiendo un objeto
+        //atributo = informacion del campo
+        nombreMascota: document.getElementById('mascota').value, 
         nombreDueño: document.getElementById('dueño').value,
         cedulaDueño: document.getElementById('cedula').value,
         edadMascota: document.getElementById('edad').value,
         telefonoDueño: document.getElementById('telefono').value,
         especialidad: document.getElementById('especialidad').value,
     };
-    guardarMascotaEnCookie(datosMascota)
+    guardarEnCookie(datosMascota)
     const confirmacion = confirm('¿Desea ver los datos o seguir añadiendo medicos?');
     if (confirmacion) {
         window.location.href = 'mascotas.html';
@@ -19,8 +22,8 @@ formularioMascota.addEventListener('submit', (event) => {
     }
 });
 // Función para guardar una mascota en la cookie
-function guardarMascotaEnCookie(mascota) {
-    // Obtener los datos de la cookie actual
+function guardarEnCookie(mascota) {
+    // Obtener los datos de la cookie actual de mascotas
     let datosMasco = getCookie("mascotas");
     // Si la cookie está vacía, inicializarla como un arreglo vacío
     if (datosMasco === "") {
@@ -38,13 +41,16 @@ function guardarMascotaEnCookie(mascota) {
 
 // Función para obtener los datos de la cookie
 function getCookie(nombre) {
+    //separa las cookies y las guarda en un arreglo
     const cookies = document.cookie.split("; ");
     for (let i = 0; i < cookies.length; i++) {
         const cookie = cookies[i].split("=");
         if (cookie[0] === nombre) {
+            // devolver la infromacion de la cookie que se llama igual
             return decodeURIComponent(cookie[1]);
         }
     }
+    //devolver vacio si no encuentra cookie
     return "";
 }
 

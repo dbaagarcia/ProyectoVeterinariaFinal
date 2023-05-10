@@ -3,7 +3,9 @@ const medicosCookie = JSON.parse(getCookie('medicos'));
 const mascotasCookie = JSON.parse(getCookie('mascotas') || "[]");
 const tablaMedicos = document.getElementById("tabla-medicos");
 const cuerpoTabla = tablaMedicos.querySelector("tbody");
-medicosCookie.forEach(medico => {
+//length tamaño del arreglo
+for (let i = 0; i < medicosCookie.length; i++) {
+    const medico = medicosCookie[i];
     const fila = cuerpoTabla.insertRow();
     const nombreMedico = fila.insertCell();
     nombreMedico.textContent = medico.nombreMedico;
@@ -22,19 +24,19 @@ medicosCookie.forEach(medico => {
     //colocar las mascotas que atiende el medico
     //mediante filter encontramos todas las mascotas que tienen esa especialidad
     let mascotasEncontradas = mascotasCookie.filter(mascota => medico.especialidad === mascota.especialidad);
+    //se creo la celda
+    const medicoMascota = fila.insertCell();
     if (mascotasEncontradas.length > 0) {
-        const medicoMascota = fila.insertCell();
         medicoMascota.innerHTML = `<ul id="pacientes"></ul>`
         const pacientes = medicoMascota.querySelector("#pacientes")
-        mascotasEncontradas.forEach(mascota => {
-            pacientes.innerHTML += `<li>${mascota.nombreMascota}</li>`;
-        });
+        for (let j = 0; j < mascotasEncontradas.length; j++) {
+            const mascotaEncontrada = mascotasEncontradas[j];
+            pacientes.innerHTML += `<li>${mascotaEncontrada.nombreMascota}</li>`;
+        }
     } else {
-        const medicoMascota = fila.insertCell();
         medicoMascota.textContent = "Sin pacientes";
     }
-});
-
+}
 
 
 // Función para obtener los datos de la cookie
